@@ -1,9 +1,15 @@
 package entities;
 
+import java.util.List;
+
 public class Customer extends Order {
         Long id;
         String name;
         Integer tier;
+
+    public Customer(List<Product> product, Customer customer) {
+        super(product, customer);
+    }
 
     public Long getId() {
         return id;

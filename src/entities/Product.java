@@ -1,25 +1,37 @@
 package entities;
 
+import java.util.List;
+import java.util.Random;
+
 public class Product extends Order {
-      private String Name;
-      private String Category;
+      private String name;
+      private String category;
       private Double price;
       private Long id;
 
+    public Product(List<Product> product, Customer customer, String name, String category, Double price, Long id) {
+        super(product, customer);
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        Random cod = new Random();
+        this.id = id;
+    }
+
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        category = category;
     }
 
     public Double getPrice() {

@@ -9,24 +9,73 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class Order {
-    public static void main(String[] args) {
-        String status;
-        Long id;
-        LocalDate orderDate;
-        LocalDate deliveryDate;
-        Customer customer;
 
-        Supplier<Integer> numeri = () -> {
-            Random rndm = new Random();
-            return rndm.nextInt(1, 120);
-        };
+    private String status;
+    private Long id;
+    private  LocalDate orderDate;
+    private  LocalDate deliveryDate;
 
-        List<Integer> numeriRandomici = new ArrayList<>();
+    private List<Product> products;
+    private Customer customer;
 
-        for (int i = 0; i > 100; i++) {
-            numeriRandomici.add(numeri.get());
-        }
-        System.out.println(numeriRandomici);
-
+    public Order(List<Product> product, Customer customer) {
+        this.products = products;
+        this.customer = customer;
+        Random cod = new Random();
+        this.id = cod.nextLong(1, 120);
+        this.orderDate = LocalDate.now();
+        this.deliveryDate = orderDate.plusDays(5);
+        this.status = "is loading";
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public LocalDate getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(LocalDate deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+
 }
+
